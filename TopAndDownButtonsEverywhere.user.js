@@ -91,23 +91,46 @@ func(
 			// img vs button
 			img_up = 'data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAUCAYAAACAl21KAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB+SURBVDhPY1i1atV/amAGahgCMoNhaIGlS5cKAp19BoRBbLJcj2QILDJINwzoAmMgfoclIkBixkS5DI8hMJcRNgxoSBoOl6CnNZBhaVhdBjWE1MSJahjQkA4KEmYH2GUrV66cSYEhYB+AzKBtFiHkQqKiH6Ro1CDCQTWgYQQAs81DU0G/83sAAAAASUVORK5CYII=';
 			img_dn = 'data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAUCAYAAACAl21KAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACPSURBVDhPY2DAAlatWvUfH8amB6vYqEGEg2pgw4iQ7cTKM6xcuXImsYpxqQOZAQ4woIIOCgzrQAl1oEFpZBiWhitFgwx7R4SBIDXYDYGZDFRgTMAwkCHGhBMRJMxwGUa8ITCbli5dKgg08AySN8+AxIhyCboiJMPIN4Qsm6miiYioxltawvSDYogohYTUAQC80UNTOht/YwAAAABJRU5ErkJggg==';
+			//menuimg='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACdUlEQVQ4T72UTUhUURTHf+e+mbHGhhIyNcrUXKSVqWnoQARBH4Lkxp3UIsQscFlIRFBERIs2hR9ULoIgok0QFAatagoUK4ksGC00TEmw8gOcN+/eGAdr9Dljbbq7e855P/7nnP99QsLxhjo6ESrs6ubdifHFNe19ID12sPnEcjXie9VR7GhT4Ohon1d5HgCVtk+ttSJ6P5YyOFo82qioEu341DNvRP8AemwdrbeUp9xSMhSpan6/ABdvqG0aJB3DMRTHQSrFSIVBDyxVIKgiI6YXTA+aLoQ7YGbs4Kk1CcB2E7sYeKRQZ7XlrFNRDhqRcy6gMZe0h27lWN81+rJAbazGDp4UF3A+IIxgmAaKks0QGDAQENi0UJMcmIKSKvWfgcIto004mSJRUoihMTG/ksIWg7g2/HvolinC4fq/AJOOa0tagNMbSzmckUu218+YPcuTyWGasrfni8jn+b16Q3HbJJyPiIwupdZl5OV1FVTlByauweRdsEfAuxkyGiDrzBQqvV5Eut1Aj1Vm72l6kwg0xuShZ/oJHwgw+9Ldgb8aCp/GoCVuoKABJ/GrtoJ9qtG5ZzF+MR725MC2fvhQAtGv8VjWeci50Llcyy4F4fIGcgfLIDIYh/kroeAhDNXBbE8c6tsKxeFhF9AYCUY3RPoWtVzY8pO3aT5MBHZ8A8/6P+noBLzLBPHBrrnIcgpfG5EvicDh8qOHcsIlPrfCIzDbm1rhcp65kb+XJnOfv5qhJ9QxKpicVG815r++nbUEPtWw4pZ5fjuwysxlrvRfeFFaX1nu999k/GrA7cPWKdTquA9XArn8CK1ADZANjAGPgSsLL+UX17ELOiBGjOsAAAAASUVORK5CYII='
 			// button id
-			s+='#__tadbe__container { position:fixed; right:0; bottom:50%;z-index:'+config.zIindex+'; height:135px; width:36px; }';
+			s+='#__tadbe__container { position:fixed; right:0; top:40%;z-index:'+config.zIindex+'; }';
+
+			s+='#play_btn_meau { height:40px; width:5px!important; margin:0px!improtant;background:rgba(0, 0, 0, 0.7);position:relative;top:15px;}';
 			s+='#play_btn_up { background:url('+img_up+') no-repeat scroll 50% 50% rgba(0, 0, 0, 0.7); }';
 			s+='#play_btn_dn { background:url('+img_dn+') no-repeat scroll 50% 50% rgba(0, 0, 0, 0.7); }';
-			s+='#play_btn_cl { line-height:36px; font-weight:bold; font-size:24px; text-align:center; }';
+			s+='#play_btn_cl { line-height:36px; font-weight:bold; font-size:24px; text-align:center;display:none; }';
+
+
 			// button class
 			s+='.play_btn { display:block; height:36px; width:36px; margin:5px 0px; cursor:pointer; border-radius:5px 0 0 5px; -webkit-transition-duration:0.5s linear; -o-transition-duration:0.5s linear; -moz-transition-duration:0.5s linear; transition-duration:0.5s linear; opacity:0.65; }';
 			s+='.play_btn:hover { opacity:1; }';
+			s+='.hidex{display:none;}';
 			// append
 			ctx.addStyle(''+s);
 		} // end of function
+
+		//menu move up
+		ctx.move_enter_=function(){
+			document.getElementById('play_btn_meau').className = "play_btn hidex";
+			document.getElementById('play_btn_up').className = "play_btn ";
+			document.getElementById('play_btn_dn').className = "play_btn ";
+			document.getElementById('play_btn_cl').className = "play_btn ";
+
+		}
+		ctx.move_out_=function(){
+			document.getElementById('play_btn_meau').className = "play_btn ";
+			document.getElementById('play_btn_up').className = "play_btn hidex";
+			document.getElementById('play_btn_dn').className = "play_btn hidex";
+			document.getElementById('play_btn_cl').className = "play_btn hidex";
+
+		}
 
 		// move up
 		ctx.move_up = function () {
 			ctx.position = document.documentElement.scrollTop || document.body.scrollTop;
 			window.scrollTo(0, ctx.position-1);
 			ctx.t1 = setTimeout(ctx.move_up, config.speed_by_over);
+
 		} // end of function
 
 		// move downn
@@ -115,6 +138,7 @@ func(
 			ctx.position = document.documentElement.scrollTop || document.body.scrollTop;
 			window.scrollTo(0, ctx.position+1);
 			ctx.t2 = setTimeout(ctx.move_dn, config.speed_by_over);
+
 		} // end of function
 
 		// document height
@@ -158,7 +182,7 @@ func(
 	(ctx) => {
 		if (ctx.skip) return;
 		// get scroll
-		var ct, up, dn, cl,
+		var ct, menu,up, dn, cl,
 			scrolled,
 			website = window.location.host,
 			h = ctx.get_scroll('Height');
@@ -168,31 +192,37 @@ func(
 
 		// create DOM element
 		ct = ctx.ce('div');
+		menu = ctx.ce('span');
 		up = ctx.ce('span');
 		dn = ctx.ce('span');
 		cl = ctx.ce('span');
 		cl.innerHTML = 'X';
 		// set attribute
 		ct.setAttribute('id','__tadbe__container');
+		menu.setAttribute('id','play_btn_meau');
 		up.setAttribute('id','play_btn_up');
 		dn.setAttribute('id','play_btn_dn');
 		cl.setAttribute('id','play_btn_cl');
 		cl.setAttribute('title','Ignore [TopAndDownButtonsEverywhere] on this site['+website+']');
 		// set class
-		up.className = "play_btn";
-		dn.className = "play_btn";
-		cl.className = "play_btn";
+		menu.className = "play_btn ";
+		up.className = "play_btn hidex";
+		dn.className = "play_btn hidex";
+		cl.className = "play_btn hidex";
 		// append element
 		document.body.appendChild(ct);
+		ct.appendChild(menu);
 		ct.appendChild(up);
 		ct.appendChild(cl);
 		ct.appendChild(dn);
 
 		// scroll
-		scrolled = window.pageYOffset || document.documentElement.scrollTop;
+		//scrolled = window.pageYOffset || document.documentElement.scrollTop;
 		// if scroll
-		up.style.visibility = (scrolled > 0)  ? "" : "hidden";
-
+		//up.style.visibility = (scrolled > 0)  ? "" : "hidden";
+		//meanu  event over
+		ct.addEventListener('mouseover', ctx.move_enter_, false);
+		ct.addEventListener('mouseout', ctx.move_out_, false);
 		// add event over
 		up.addEventListener('mouseover', ctx.move_up, false);
 		dn.addEventListener('mouseover', ctx.move_dn, false);
@@ -205,12 +235,12 @@ func(
 		cl.addEventListener('click', function(){ config.ignores.push(website); GM_setValue('ignores', config.ignores); document.body.removeChild(ct); }, false);
 
 		// add event scroll
-		window.onscroll = function() {
-			var scrolled = window.pageYOffset || document.documentElement.scrollTop, diffHeight = document.body.scrollHeight - window.innerHeight;
-			// if scroll up
-			up.style.visibility = (scrolled > 0)  ? "" : "hidden";
-			// if scroll dn
-			dn.style.visibility = (diffHeight > scrolled)  ? "" : "hidden";
-		}; // end of function
+		// window.onscroll = function() {
+		// 	var scrolled = window.pageYOffset || document.documentElement.scrollTop, diffHeight = document.body.scrollHeight - window.innerHeight;
+		// 	// if scroll up
+		// 	up.style.visibility = (scrolled > 0)  ? "" : "hidden";
+		// 	// if scroll dn
+		// 	dn.style.visibility = (diffHeight > scrolled)  ? "" : "hidden";
+		// }; // end of function
 	}
 );
