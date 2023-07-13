@@ -244,3 +244,5 @@ func(
 		// }; // end of function
 	}
 );
+
+kStart();
