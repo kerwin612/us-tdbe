@@ -31,6 +31,8 @@ k_cs.ignores = [];
 // @include *
 // @require https://openuserjs.org/src/libs/kerwin612/Kerwin612.js
 // @run-at document-start
+// @grant GM.getValue
+// @grant GM.setValue
 // @grant GM_getValue
 // @grant GM_setValue
 // @noframes
